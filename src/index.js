@@ -18,4 +18,15 @@ fetch('http://localhost:3000/characters')
       <p>Votes: <span id="vote-count">${character.votes}</span></p>
     `;
   }
+  const form = document.getElementById('votes-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const voteInput = document.getElementById('votes');
+    const votesToAdd = parseInt(voteInput.value);
+    const voteCountElement = document.getElementById('vote-count');
+    const currentVotes = parseInt(voteCountElement.textContent);
     
+    voteCountElement.textContent = currentVotes + votesToAdd;
+    voteInput.value = '';
+  });
+  
